@@ -1,0 +1,1256 @@
+
+# Constants and data
+EXPEDITION_LOCATIONS = {
+    "Forest": {"difficulty": 1, "min_level": 1, "duration": 30, "loot": {"Common": ["Wood", "Berries", "Mushrooms", "Herbs"], "Uncommon": ["Fur", "Feathers", "Wild Honey"], "Rare": ["Rare Herbs", "Exotic Flowers", "Wolf Fang"], "Epic": ["Ancient Tree Bark", "Fairy Dust"]}},
+    "Cave": {"difficulty": 2, "min_level": 5, "duration": 60, "loot": {"Common": ["Stone", "Coal", "Iron Ore"], "Uncommon": ["Copper Ore", "Silver Ore", "Quartz"], "Rare": ["Gold Ore", "Gemstones", "Crystal"], "Epic": ["Diamond", "Ancient Fossil"]}},
+    "Mountain": {"difficulty": 3, "min_level": 10, "duration": 90, "loot": {"Common": ["Stone", "Ice", "Mountain Herbs"], "Uncommon": ["Silver Ore", "Eagle Feather", "Goat Horn"], "Rare": ["Gold Ore", "Platinum Ore", "Yeti Fur"], "Epic": ["Dragon Scale", "Phoenix Feather"]}},
+    "Ancient Ruins": {"difficulty": 4, "min_level": 15, "duration": 120, "loot": {"Common": ["Stone Fragments", "Pottery Shards", "Rusty Coins"], "Uncommon": ["Ancient Scrolls", "Ceremonial Dagger", "Ornate Key"], "Rare": ["Magical Essence", "Enchanted Gem", "Mysterious Artifact"], "Epic": ["Lost Technology", "Philosopher's Stone"]}},
+    "Swamp": {"difficulty": 2, "min_level": 8, "duration": 75, "loot": {"Common": ["Swamp Herbs", "Moss", "Murky Water"], "Uncommon": ["Poison Glands", "Alligator Teeth", "Exotic Mushrooms"], "Rare": ["Swamp Gas", "Will-o'-Wisp Essence", "Cursed Amulet"], "Epic": ["Hydra Scale", "Witch's Brew"]}},
+    "Desert": {"difficulty": 3, "min_level": 12, "duration": 100, "loot": {"Common": ["Sand", "Cactus Fruit", "Lizard Scales"], "Uncommon": ["Scorpion Venom", "Desert Rose", "Ancient Coins"], "Rare": ["Mirage Essence", "Djinn Lamp", "Scarab Amulet"], "Epic": ["Pharaoh's Mask", "Sun Stone"]}},
+    "Volcano": {"difficulty": 5, "min_level": 20, "duration": 150, "loot": {"Common": ["Obsidian", "Sulfur", "Ash"], "Uncommon": ["Lava Rock", "Fire Salamander Scale", "Heat-Resistant Fiber"], "Rare": ["Fire Essence", "Phoenix Ash", "Dragon's Breath"], "Epic": ["Dragon Egg", "Volcanic Core"]}},
+    "Frozen Tundra": {"difficulty": 4, "min_level": 18, "duration": 135, "loot": {"Common": ["Ice Crystals", "Frost Herbs", "Polar Bear Fur"], "Uncommon": ["Frozen Fossils", "Aurora Essence", "Walrus Tusk"], "Rare": ["Glacial Core", "Frost Giant's Toenail", "Enchanted Ice"], "Epic": ["Woolly Mammoth Tusk", "Eternal Ice"]}},
+    "Celestial Plane": {"difficulty": 8, "min_level": 50, "duration": 300, "loot": {"Common": ["Star Dust", "Moonstone", "Nebula Gas"], "Uncommon": ["Cosmic Essence", "Asteroid Fragment", "Solar Wind"], "Rare": ["Void Shards", "Supernova Remnant", "Black Hole Fragment"], "Epic": ["Celestial Core", "Universe in a Bottle"]}},
+    "Underwater City": {"difficulty": 6, "min_level": 30, "duration": 180, "loot": {"Common": ["Pearls", "Coral", "Seaweed"], "Uncommon": ["Mermaid Scales", "Enchanted Seashell", "Sunken Treasure"], "Rare": ["Atlantean Artifacts", "Kraken Ink", "Poseidon's Blessing"], "Epic": ["Trident Shard", "Ocean's Heart"]}},
+    "Haunted Mansion": {"difficulty": 7, "min_level": 40, "duration": 210, "loot": {"Common": ["Ectoplasm", "Ghostly Essence", "Cobwebs"], "Uncommon": ["Cursed Objects", "Spectral Residue", "Phantom Fabric"], "Rare": ["Soul Gem", "Banshee's Tear", "Reaper's Scythe Fragment"], "Epic": ["Philosopher's Mirror", "Tome of the Dead"]}}
+}
+
+WEAPONS = {
+    "Wooden Sword": {"price": 100, "attack": 5, "durability": 100},
+    "Stone Sword": {"price": 200, "attack": 8, "durability": 150},
+    "Iron Sword": {"price": 350, "attack": 12, "durability": 250},
+    "Steel Sword": {"price": 600, "attack": 18, "durability": 350},
+    "Enchanted Sword": {"price": 1200, "attack": 25, "durability": 500},
+    "Legendary Sword": {"price": 2500, "attack": 40, "durability": 1000},
+    "Bow": {"price": 300, "attack": 10, "durability": 200},
+    "Crossbow": {"price": 500, "attack": 15, "durability": 300},
+    "Magic Staff": {"price": 800, "attack": 20, "durability": 400},
+    "Plasma Rifle": {"price": 5000, "attack": 50, "durability": 1000},
+    "Void Blade": {"price": 10000, "attack": 100, "durability": 2000},
+    "Celestial Hammer": {"price": 15000, "attack": 150, "durability": 3000}
+}
+
+ARMOR = {
+    "Leather Armor": {"price": 200, "defense": 5, "durability": 150},
+    "Iron Armor": {"price": 400, "defense": 10, "durability": 250},
+    "Steel Armor": {"price": 800, "defense": 15, "durability": 350},
+    "Enchanted Armor": {"price": 1500, "defense": 25, "durability": 600},
+    "Dragon Scale Armor": {"price": 3000, "defense": 40, "durability": 1000},
+    "Void-infused Armor": {"price": 10000, "defense": 100, "durability": 2000},
+    "Celestial Plate": {"price": 20000, "defense": 200, "durability": 5000},
+    "Quantum Suit": {"price": 50000, "defense": 500, "durability": 10000}
+}
+
+ANIMALS = {
+    "Chicken": {"price": 50, "product": "Egg", "production_rate": 1},
+    "Cow": {"price": 200, "product": "Milk", "production_rate": 2},
+    "Sheep": {"price": 150, "product": "Wool", "production_rate": 1},
+    "Pig": {"price": 100, "product": "Bacon", "production_rate": 2},
+    "Goat": {"price": 180, "product": "Cheese", "production_rate": 1},
+    "Bee": {"price": 80, "product": "Honey", "production_rate": 1},
+    "Duck": {"price": 70, "product": "Duck Egg", "production_rate": 1},
+    "Rabbit": {"price": 60, "product": "Rabbit Foot", "production_rate": 1},
+    "Llama": {"price": 300, "product": "Wool", "production_rate": 2},
+    "Silkworm": {"price": 100, "product": "Silk", "production_rate": 1},
+    "Truffle Pig": {"price": 500, "product": "Truffle", "production_rate": 1},
+    "Golden Goose": {"price": 10000, "product": "Golden Egg", "production_rate": 1}
+}
+
+# Initial player stats
+player_stats = {
+    "health": 100,
+    "defense": 0,
+    "sword": None,
+    "armor": None,
+    "companions": {},
+    "expedition_progress": {}
+}
+
+
+
+
+MARKET_ITEMS = {
+        "map": {"price": 1000},
+        "armor": {ARMOR},
+        "sword": {WEAPONS},
+        "companion": {ANIMALS},
+
+    "Tools": {
+        "Lucky Fishing Hook": {
+            "price": 1000,
+            "effect": "Increases rare fish chance"
+        },
+        "Miner's Lantern": {
+            "price": 1500,
+            "effect": "Improves ore detection"
+        },
+        "Farmer's Almanac": {
+            "price": 800,
+            "effect": "Increases crop yield"
+        },
+        "Adventurer's Compass": {
+            "price": 2000,
+            "effect": "Improves expedition loot"
+        }
+    },
+    "Accessories": {
+        "Lucky Charm": {
+            "price": 5000,
+            "effect": "Slightly increases all drop rates"
+        },
+        "Speed Boots": {
+            "price": 3000,
+            "effect": "Reduces activity durations"
+        },
+        "Experience Amulet": {
+            "price": 7500,
+            "effect": "Increases experience gain"
+        },
+        "Wealth Ring": {
+            "price": 10000,
+            "effect": "Increases coin rewards"
+        }
+    },
+    "Special Items": {
+        "Teleportation Scroll": {
+            "price": 500,
+            "effect": "Instantly complete an expedition"
+        },
+        "Time Warp Potion": {
+            "price": 1000,
+            "effect": "Instantly grow crops"
+        },
+        "Treasure Map": {
+            "price": 2000,
+            "effect": "Guarantees rare loot on next expedition"
+        },
+        "Skill Reset Potion": {
+            "price": 5000,
+            "effect": "Allows redistribution of skill points"
+        }
+    },
+    "Rare Resources": {
+        "Dragon Scale": {
+            "price": 10000
+        },
+        "Void Shard": {
+            "price": 15000
+        },
+        "Celestial Dust": {
+            "price": 20000
+        },
+        "Enchanted Gemstone": {
+            "price": 25000
+        }
+    }
+}
+
+@bot.command(name='craft')
+async def craft(ctx, item_name):
+    item_data = ARMOR.get(item_name, WEAPONS.get(item_name))
+    if item_data:
+        cost = item_data['price']
+        if player_data['balance'] >= cost:
+            player_data['balance'] -= cost
+            player_data['inventory'][item_name] = player_data['inventory'].get(item_name, 0) + 1
+            await ctx.send(f"Crafted {item_name}! Remaining balance: {player_data['balance']}")
+        else:
+            await ctx.send("Insufficient balance!")
+    else:
+        await ctx.send("Invalid item name!")
+
+@bot.command(name='expedition')
+async def expedition(ctx, location):
+    if location not in EXPEDITION_LOCATIONS:
+        await ctx.send("Invalid location!")
+        return
+
+    if location not in player_data['location_maps']:
+        await ctx.send("You don't have the map for this location!")
+        return
+
+    player_data['current_location'] = location
+    location_info = EXPEDITION_LOCATIONS[location]
+    duration = location_info['duration']
+
+    # Start expedition
+    await ctx.send(f"Starting expedition to {location}. Duration: {duration} minutes.")
+
+    # Handle random encounters
+    for _ in range(random.randint(2, 6)):
+        result = await handle_encounter(ctx)
+        if result == "Failed":
+            await ctx.send("Expedition failed due to health loss!")
+            return
+
+    # Complete expedition
+    loot = get_loot(location)
+    await ctx.send(f"Expedition to {location} completed! Loot: {loot}")
+
+def get_loot(location):
+    loot_table = EXPEDITION_LOCATIONS[location]['loot']
+    loot = {rarity: random.choice(items) for rarity, items in loot_table.items()}
+    return loot
+
+async def handle_encounter(ctx):
+    animal = random.choice(list(ANIMALS.keys()))
+    damage = ANIMALS[animal]['damage']
+
+    await ctx.send(f"You encountered a {animal}!")
+    await ctx.send("Type `?run` within 5 minutes to avoid damage or `?fight` to engage.")
+
+    start_time = time.time()
+    while time.time() - start_time < 300:  # 5 minutes
+        try:
+            response = await bot.wait_for('message', timeout=300)
+            if response.content.lower() == '?run':
+                await ctx.send("You ran away successfully!")
+                return "Success"
+            elif response.content.lower() == '?fight':
+                if player_data['equipped_sword']:
+                    sword = WEAPONS[player_data['equipped_sword']]
+                    if sword['attack'] >= damage:
+                        await ctx.send(f"You defeated the {animal}!")
+                        return "Success"
+                    else:
+                        player_data['health'] -= damage
+                        if player_data['health'] <= 0:
+                            await ctx.send("You lost all health!")
+                            return "Failed"
+                        await ctx.send(f"You fought the {animal} but lost {damage} health. Current health: {player_data['health']}")
+                else:
+                    player_data['health'] -= damage
+                    if player_data['health'] <= 0:
+                        await ctx.send("You lost all health!")
+                        return "Failed"
+                    await ctx.send(f"You fought the {animal} but lost {damage} health. Current health: {player_data['health']}")
+            else:
+                await ctx.send("Invalid command! Type `?run` to escape or `?fight` to engage.")
+        except:
+            await ctx.send("Timed out! You failed to respond in time.")
+            return "Failed"
+
+    return "Failed"
+
+@bot.command(name='repair')
+async def repair(ctx, item_type, item_name):
+    item_data = ARMOR.get(item_name, WEAPONS.get(item_name))
+    if item_data:
+        if item_type == 'armor' and item_name == player_data['equipped_armor']:
+            repair_cost = item_data['price'] // 2
+        elif item_type == 'sword' and item_name == player_data['equipped_sword']:
+            repair_cost = item_data['price'] // 2
+        else:
+            await ctx.send("Item not equipped or invalid item type!")
+            return
+
+        if player_data['balance'] >= repair_cost:
+            player_data['balance'] -= repair_cost
+            await ctx.send(f"{item_name} repaired! Remaining balance: {player_data['balance']}")
+        else:
+            await ctx.send("Insufficient balance!")
+    else:
+        await ctx.send("Item not found!")
+
+@bot.command(name='sell_item')
+async def sell_item(ctx, item_name):
+    if item_name in player_data['inventory']:
+        item_data = ARMOR.get(item_name, WEAPONS.get(item_name))
+        sell_price = item_data['price'] // 2
+        player_data['balance'] += sell_price
+        player_data['inventory'].pop(item_name)
+        await ctx.send(f"Sold {item_name} for {sell_price}. New balance: {player_data['balance']}")
+    else:
+        await ctx.send("Item not found in inventory!")
+
+@bot.command(name='barn')
+async def barn(ctx):
+    if player_data['companions']:
+        companions_list = "\n".join([f"{name}: {info['product']} (Trained: {info.get('trained', 0)})" for name, info in player_data['companions'].items()])
+        await ctx.send(f"Your companions:\n{companions_list}")
+    else:
+        await ctx.send("You have no companions.")
+
+@bot.command(name='map')
+async def map(ctx, location):
+    if location in EXPEDITION_LOCATIONS:
+        if location in player_data['location_maps']:
+            await ctx.send(f"You already have the map for {location}.")
+        else:
+            player_data['location_maps'][location] = True
+            await ctx.send(f"Map for {location} unlocked!")
+    else:
+        await ctx.send("Invalid location!")
+
+@bot.command(name='equip')
+async def equip(ctx, item_type, item_name):
+    if item_type == 'armor':
+        if item_name in player_data['inventory'] and item_name in ARMOR:
+            player_data['equipped_armor'] = item_name
+            player_data['defense'] += ARMOR[item_name]['defense']
+            await ctx.send(f"Equipped {item_name}!")
+        else:
+            await ctx.send("Armor not found in inventory!")
+    elif item_type == 'sword':
+        if item_name in player_data['inventory'] and item_name in WEAPONS:
+            player_data['equipped_sword'] = item_name
+            await ctx.send(f"Equipped {item_name}!")
+        else:
+            await ctx.send("Sword not found in inventory!")
+    else:
+        await ctx.send("Invalid item type!")
+def get_loot(location):
+    loot_table = EXPEDITION_LOCATIONS[location]['loot']
+    loot = {rarity: random.choice(items) for rarity, items in loot_table.items()}
+    return loot
+
+async def encounter(ctx):
+    wild_animals = {
+        "Wolf": {"damage": 10},
+        "Bear": {"damage": 20},
+        # Add other wild animals
+    }
+    animal = random.choice(list(wild_animals.keys()))
+    damage = wild_animals[animal]['damage']
+
+    await ctx.send(f"You encountered a {animal}!")
+    await ctx.send("Type `?run` within 5 minutes to avoid damage or `?fight` to engage.")
+
+    start_time = time.time()
+    while time.time() - start_time < 300:  # 5 minutes
+        response = await bot.wait_for('message', timeout=300)
+        if response.content.lower() == '?run':
+            await ctx.send("You ran away successfully!")
+            return "Success"
+        elif response.content.lower() == '?fight':
+            if player_data['equipped_sword']:
+                sword = WEAPONS[player_data['equipped_sword']]
+                if sword['attack'] >= damage:
+                    await ctx.send(f"You defeated the {animal}!")
+                    return "Success"
+                else:
+                    player_data['health'] -= damage
+                    if player_data['health'] <= 0:
+                        await ctx.send("You lost all health!")
+                        return "Failed"
+                    await ctx.send(f"You fought the {animal} but lost {damage} health. Current health: {player_data['health']}")
+            else:
+                player_data['health'] -= damage
+                if player_data['health'] <= 0:
+                    await ctx.send("You lost all health!")
+                    return "Failed"
+                await ctx.send(f"You fought the {animal} but lost {damage} health. Current health: {player_data['health']}")
+        else:
+            await ctx.send("Invalid command! Type `?run` to escape or `?fight` to engage.")
+
+    return "Failed"
+@bot.command(name='repair')
+async def repair(ctx, item_type, item_name):
+    item_data = ARMOR.get(item_name, WEAPONS.get(item_name))
+    if not item_data:
+        await ctx.send("Item not found!")
+        return
+
+    if item_type == 'armor' and item_name == player_data['equipped_armor']:
+        repair_cost = item_data['price'] // 2
+    elif item_type == 'sword' and item_name == player_data['equipped_sword']:
+        repair_cost = item_data['price'] // 2
+    else:
+        await ctx.send("Item not equipped or invalid item type!")
+        return
+
+    if player_data['balance'] >= repair_cost:
+        player_data['balance'] -= repair_cost
+        await ctx.send(f"{item_name} repaired! Remaining balance: {player_data['balance']}")
+    else:
+        await ctx.send("Insufficient balance!")
+@bot.command(name='sell_item')
+async def sell_item(ctx, item_name):
+    if item_name in player_data['inventory']:
+        item_data = ARMOR.get(item_name, WEAPONS.get(item_name))
+        sell_price = item_data['price'] // 2
+        player_data['balance'] += sell_price
+        del player_data['inventory'][item_name]
+        await ctx.send(f"Sold {item_name} for {sell_price}. New balance: {player_data['balance']}")
+    else:
+        await ctx.send("Item not found in inventory!")
+
+@bot.command(name='barn')
+async def barn(ctx):
+    if player_data['companions']:
+        companions_list = "\n".join([f"{name}: {info['product']} (Trained: {info.get('trained', 0)})" for name, info in player_data['companions'].items()])
+        await ctx.send(f"Your companions:\n{companions_list}")
+    else:
+        await ctx.send("You have no companions.")
+
+@bot.command(name='map')
+async def map(ctx, location):
+    if location in EXPEDITION_LOCATIONS:
+        if player_data['location_maps'].get(location):
+            await ctx.send(f"You already have the map for {location}.")
+        else:
+            player_data['location_maps'][location] = True
+            await ctx.send(f"Map for {location} unlocked!")
+    else:
+        await ctx.send("Invalid location!")
+
+@bot.command(name='equip')
+async def equip(ctx, item_type, item_name):
+    if item_type == 'armor':
+        if item_name in player_data['inventory']:
+            player_data['equipped_armor'] = item_name
+            player_data['defense'] += ARMOR[item_name]['defense']
+            await ctx.send(f"Equipped {item_name}!")
+        else:
+            await ctx.send("Armor not found in inventory!")
+    elif item_type == 'sword':
+        print("fuck")
+
+
+# Expanded Ores
+ORES = {
+    "Coal": {
+        "rarity": "Common",
+        "price": 5
+    },
+    "Iron Ore": {
+        "rarity": "Common",
+        "price": 10
+    },
+    "Copper Ore": {
+        "rarity": "Common",
+        "price": 8
+    },
+    "Silver Ore": {
+        "rarity": "Uncommon",
+        "price": 20
+    },
+    "Gold Ore": {
+        "rarity": "Rare",
+        "price": 50
+    },
+    "Platinum Ore": {
+        "rarity": "Epic",
+        "price": 100
+    },
+    "Mithril Ore": {
+        "rarity": "Legendary",
+        "price": 250
+    },
+    "Adamantite Ore": {
+        "rarity": "Mythic",
+        "price": 500
+    },
+    "Orichalcum Ore": {
+        "rarity": "Divine",
+        "price": 1000
+    },
+    "Void Ore": {
+        "rarity": "Transcendent",
+        "price": 5000
+    }
+}
+SAVE_INTERVAL = 300  # Save data every 5 minutes
+
+# Expanded rarity levels and special traits
+RARITY_LEVELS = [
+    "Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic", "Divine",
+    "Transcendent"
+]
+SPECIAL_TRAITS = [
+    "Sharp", "Durable", "Lucky", "Swift", "Powerful", "Wise", "Vampiric",
+    "Explosive", "Frost", "Fiery", "Ethereal", "Void-touched", "Time-warped",
+    "Soul-bound", "Celestial", "Abyssal", "Prismatic", "Quantum"
+]
+
+# Expanded Crops
+CROPS = {
+    "Wheat": {
+        "growth_time": 5,
+        "base_yield": 3,
+        "price": 10,
+        "season": "Summer"
+    },
+    "Corn": {
+        "growth_time": 8,
+        "base_yield": 4,
+        "price": 15,
+        "season": "Summer"
+    },
+    "Tomato": {
+        "growth_time": 6,
+        "base_yield": 5,
+        "price": 20,
+        "season": "Summer"
+    },
+    "Potato": {
+        "growth_time": 7,
+        "base_yield": 6,
+        "price": 18,
+        "season": "Spring"
+    },
+    "Carrot": {
+        "growth_time": 4,
+        "base_yield": 4,
+        "price": 12,
+        "season": "Spring"
+    },
+    "Strawberry": {
+        "growth_time": 3,
+        "base_yield": 2,
+        "price": 25,
+        "season": "Spring"
+    },
+    "Pumpkin": {
+        "growth_time": 10,
+        "base_yield": 1,
+        "price": 50,
+        "season": "Autumn"
+    },
+    "Watermelon": {
+        "growth_time": 12,
+        "base_yield": 1,
+        "price": 60,
+        "season": "Summer"
+    },
+    "Cabbage": {
+        "growth_time": 7,
+        "base_yield": 3,
+        "price": 22,
+        "season": "Spring"
+    },
+    "Eggplant": {
+        "growth_time": 9,
+        "base_yield": 2,
+        "price": 30,
+        "season": "Summer"
+    },
+    "Rice": {
+        "growth_time": 15,
+        "base_yield": 8,
+        "price": 35,
+        "season": "Summer"
+    },
+    "Coffee": {
+        "growth_time": 20,
+        "base_yield": 2,
+        "price": 100,
+        "season": "Spring"
+    },
+    "Cacao": {
+        "growth_time": 25,
+        "base_yield": 1,
+        "price": 150,
+        "season": "Summer"
+    },
+    "Grapes": {
+        "growth_time": 18,
+        "base_yield": 3,
+        "price": 45,
+        "season": "Autumn"
+    },
+    "Mushroom": {
+        "growth_time": 2,
+        "base_yield": 5,
+        "price": 40,
+        "season": "All"
+    }
+}
+
+# Expanded Farming Tools
+FARMING_TOOLS = {
+    "Basic Hoe": {
+        "price": 50,
+        "efficiency": 1.0,
+        "durability": 100
+    },
+    "Iron Hoe": {
+        "price": 150,
+        "efficiency": 1.2,
+        "durability": 200
+    },
+    "Gold Hoe": {
+        "price": 300,
+        "efficiency": 1.5,
+        "durability": 150
+    },
+    "Diamond Hoe": {
+        "price": 500,
+        "efficiency": 2.0,
+        "durability": 300
+    },
+    "Enchanted Hoe": {
+        "price": 1000,
+        "efficiency": 2.5,
+        "durability": 500
+    },
+    "Cosmic Hoe": {
+        "price": 5000,
+        "efficiency": 5.0,
+        "durability": 1000
+    },
+    "Basic Watering Can": {
+        "price": 75,
+        "efficiency": 1.0,
+        "durability": 150
+    },
+    "Advanced Watering Can": {
+        "price": 200,
+        "efficiency": 1.5,
+        "durability": 250
+    },
+    "Sprinkler System": {
+        "price": 1000,
+        "efficiency": 3.0,
+        "durability": 1000
+    },
+    "Weather Control Device": {
+        "price": 10000,
+        "efficiency": 10.0,
+        "durability": 5000
+    },
+    "Seed Spreader": {
+        "price": 300,
+        "efficiency": 2.0,
+        "durability": 200
+    },
+    "Fertilizer Drone": {
+        "price": 2000,
+        "efficiency": 4.0,
+        "durability": 500
+    }
+}
+
+# Expanded Crafting Recipes
+CRAFTING_RECIPES = {
+    "Health Potion": {
+        "Herbs": 2,
+        "Berries": 1,
+        "Water": 1,
+        "result_quantity": 1,
+        "exp_gain": 10
+    },
+    "Iron Ingot": {
+        "Iron Ore": 3,
+        "Coal": 1,
+        "result_quantity": 1,
+        "exp_gain": 15
+    },
+    "Wooden Plank": {
+        "Wood": 1,
+        "result_quantity": 4,
+        "exp_gain": 5
+    },
+    "Steel Bar": {
+        "Iron Ingot": 2,
+        "Coal": 2,
+        "result_quantity": 1,
+        "exp_gain": 20
+    },
+    "Magic Dust": {
+        "Crystal": 1,
+        "Rare Herbs": 2,
+        "result_quantity": 3,
+        "exp_gain": 25
+    },
+    "Enchanted Fabric": {
+        "Wool": 3,
+        "Magic Dust": 1,
+        "result_quantity": 1,
+        "exp_gain": 30
+    },
+    "Golden Apple": {
+        "Apple": 1,
+        "Gold Ingot": 1,
+        "result_quantity": 1,
+        "exp_gain": 40
+    },
+    "Mystic Scroll": {
+        "Ancient Scrolls": 1,
+        "Magical Essence": 2,
+        "Ink": 1,
+        "result_quantity": 1,
+        "exp_gain": 50
+    },
+    "Dragon Armor Piece": {
+        "Dragon Scales": 5,
+        "Steel Bar": 3,
+        "Magical Essence": 2,
+        "result_quantity": 1,
+        "exp_gain": 100
+    },
+    "Void-infused Ingot": {
+        "Iron Ingot": 1,
+        "Void Shards": 3,
+        "Star Dust": 2,
+        "result_quantity": 1,
+        "exp_gain": 200
+    },
+    "Cosmic Elixir": {
+        "Star Dust": 5,
+        "Golden Apple": 1,
+        "Cosmic Essence": 3,
+        "result_quantity": 1,
+        "exp_gain": 300
+    },
+    "Time Warp Device": {
+        "Void-infused Ingot": 2,
+        "Cosmic Essence": 5,
+        "Ectoplasm": 3,
+        "result_quantity": 1,
+        "exp_gain": 500
+    }
+}
+
+# Expanded Fishing Rods
+FISHING_RODS = {
+    "Basic Fishing Rod": {
+        "price": 100,
+        "efficiency": 1.0,
+        "durability": 100
+    },
+    "Advanced Fishing Rod": {
+        "price": 300,
+        "efficiency": 1.5,
+        "durability": 200
+    },
+    "Pro Fishing Rod": {
+        "price": 600,
+        "efficiency": 2.0,
+        "durability": 300
+    },
+    "Enchanted Fishing Rod": {
+        "price": 1200,
+        "efficiency": 2.5,
+        "durability": 500
+    },
+    "Legendary Fishing Rod": {
+        "price": 2500,
+        "efficiency": 3.0,
+        "durability": 1000
+    },
+    "Cosmic Fishing Rod": {
+        "price": 10000,
+        "efficiency": 5.0,
+        "durability": 2000
+    }
+}
+
+# Expanded Fish
+FISH = {
+    "Sardine": {
+        "rarity": "Common",
+        "price": 5
+    },
+    "Trout": {
+        "rarity": "Common",
+        "price": 10
+    },
+    "Salmon": {
+        "rarity": "Uncommon",
+        "price": 20
+    },
+    "Tuna": {
+        "rarity": "Rare",
+        "price": 50
+    },
+    "Swordfish": {
+        "rarity": "Epic",
+        "price": 100
+    },
+    "Golden Fish": {
+        "rarity": "Legendary",
+        "price": 500
+    },
+    "Anglerfish": {
+        "rarity": "Rare",
+        "price": 75
+    },
+    "Pufferfish": {
+        "rarity": "Uncommon",
+        "price": 30
+    },
+    "Shark": {
+        "rarity": "Epic",
+        "price": 200
+    },
+    "Kraken Tentacle": {
+        "rarity": "Mythic",
+        "price": 1000
+    },
+    "Cosmic Carp": {
+        "rarity": "Divine",
+        "price": 5000
+    },
+    "Void Eel": {
+        "rarity": "Transcendent",
+        "price": 10000
+    }
+}
+
+# Expanded Mining Tools
+MINING_TOOLS = {
+    "Basic Pickaxe": {
+        "price": 100,
+        "efficiency": 1.0,
+        "durability": 100
+    },
+    "Iron Pickaxe": {
+        "price": 300,
+        "efficiency": 1.5,
+        "durability": 200
+    },
+    "Steel Pickaxe": {
+        "price": 600,
+        "efficiency": 2.0,
+        "durability": 300
+    },
+    "Diamond Pickaxe": {
+        "price": 1200,
+        "efficiency": 2.5,
+        "durability": 500
+    },
+    "Mythril Pickaxe": {
+        "price": 2500,
+        "efficiency": 3.0,
+        "durability": 1000
+    },
+    "Void-infused Pickaxe": {
+        "price": 10000,
+        "efficiency": 5.0,
+        "durability": 2000
+    },
+    "Cosmic Drill": {
+        "price": 50000,
+        "efficiency": 10.0,
+        "durability": 5000
+    }
+}
+
+
+@bot.command(name='quest', help='Start a quest')
+async def quest(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+
+    if 'current_quest' in player:
+        await ctx.send(
+            "You're already on a quest! Use !check_quest to see your progress."
+        )
+        return
+
+    quests = [
+        {
+            "name": "Crop Harvester",
+            "type": "harvest",
+            "target": "Wheat",
+            "amount": 10,
+            "reward": 100
+        },
+        {
+            "name": "Fish Catcher",
+            "type": "fish",
+            "target": "Trout",
+            "amount": 5,
+            "reward": 150
+        },
+        {
+            "name": "Ore Collector",
+            "type": "mine",
+            "target": "Iron Ore",
+            "amount": 8,
+            "reward": 200
+        },
+        {
+            "name": "Monster Slayer",
+            "type": "combat",
+            "target": "Goblin",
+            "amount": 3,
+            "reward": 250
+        },
+    ]
+
+    quest = random.choice(quests)
+    player['current_quest'] = quest
+    player['current_quest']['progress'] = 0
+
+    await ctx.send(
+        f"You've started the quest: {quest['name']}! Your task is to {quest['type']} {quest['amount']} {quest['target']}(s)."
+    )
+
+
+@bot.command(name='check_quest', help='Check your current quest progress')
+async def check_quest(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+
+    if 'current_quest' not in player:
+        await ctx.send(
+            "You're not on a quest right now. Use !quest to start one.")
+        return
+
+    quest = player['current_quest']
+    await ctx.send(
+        f"Current Quest: {quest['name']}\nProgress: {quest['progress']}/{quest['amount']} {quest['target']}(s)\nReward: {quest['reward']} coins"
+    )
+
+
+@bot.command(name='complete_quest', help='Complete your current quest')
+async def complete_quest(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+
+    if 'current_quest' not in player:
+        await ctx.send(
+            "You're not on a quest right now. Use !quest to start one.")
+        return
+
+    quest = player['current_quest']
+    if quest['progress'] < quest['amount']:
+        await ctx.send(
+            f"You haven't completed the quest yet. Progress: {quest['progress']}/{quest['amount']} {quest['target']}(s)"
+        )
+        return
+
+    player['coins'] += quest['reward']
+    del player['current_quest']
+    await ctx.send(
+        f"Congratulations! You've completed the quest and earned {quest['reward']} coins!"
+    )
+# Helper functions
+def get_player(user_id):
+    if user_id not in player_data:
+        player_data[user_id] = {
+            "coins": 100,
+            "inventory": defaultdict(int),
+            "equipment": {
+                "weapon": None,
+                "armor": None,
+                "farming_tool": "Basic Hoe",
+                "fishing_rod": "Basic Fishing Rod",
+                "mining_tool": "Basic Pickaxe"
+            },
+            "skills": {
+                "farming": {"level": 1, "exp": 0},
+                "combat": {"level": 1, "exp": 0},
+                "fishing": {"level": 1, "exp": 0},
+                "mining": {"level": 1, "exp": 0},
+                "crafting": {"level": 1, "exp": 0}
+            },
+            "farm": {},
+            "animals": {},
+            "last_expedition": None,
+            "current_expedition": None
+        }
+    return player_data[user_id]
+
+def update_skill(player, skill, exp_gain):
+    current_level = player["skills"][skill]["level"]
+    current_exp = player["skills"][skill]["exp"]
+    new_exp = current_exp + exp_gain
+    level_up = False
+    while new_exp >= 100 * current_level:
+        new_exp -= 100 * current_level
+        current_level += 1
+        level_up = True
+    player["skills"][skill]["level"] = current_level
+    player["skills"][skill]["exp"] = new_exp
+    return level_up
+
+# Add or update these commands
+@bot.command(name='fish', help='Go fishing at a specific location')
+async def fish(ctx, *, location: str):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+
+    if location not in FISHING_LOCATIONS:
+        await ctx.send("Invalid fishing location. Choose from: " +
+                       ", ".join(FISHING_LOCATIONS.keys()))
+        return
+
+    fishing_data = FISHING_LOCATIONS[location]
+    if player['skills']['fishing']['level'] < fishing_data['min_level']:
+        await ctx.send(
+            f"Your fishing level is too low for this location. You need level {fishing_data['min_level']}."
+        )
+        return
+
+    fishing_rod = player['equipment']['fishing_rod']
+    if fishing_rod not in FISHING_RODS:
+        await ctx.send("You need a fishing rod to fish!")
+        return
+
+    await ctx.send(
+        f"You start fishing at {location}. This will take {fishing_data['duration']} seconds."
+    )
+    await asyncio.sleep(fishing_data['duration'])
+
+    rarity = random.choices(["Common", "Uncommon", "Rare", "Epic"],
+                            weights=[0.6, 0.25, 0.1, 0.05])[0]
+    caught_fish = random.choice(fishing_data['loot'][rarity])
+
+    player['inventory'][caught_fish] = player['inventory'].get(caught_fish,
+                                                               0) + 1
+    exp_gain = fishing_data['difficulty'] * 10
+    level_up = update_skill(player, "fishing", exp_gain)
+
+    await ctx.send(
+        f"You caught a {caught_fish} and gained {exp_gain} fishing exp!")
+    if level_up:
+        await ctx.send(
+            f"Congratulations! Your fishing skill leveled up to {player['skills']['fishing']['level']}!"
+        )
+
+
+@bot.command(name='market', help='View or interact with the market')
+async def market(ctx,
+                 action: str = "view",
+                 category: str = None,
+                 item: str = None):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+
+    if action == "view":
+        if category:
+            if category not in MARKET_ITEMS:
+                await ctx.send("Invalid category. Choose from: " +
+                               ", ".join(MARKET_ITEMS.keys()))
+                return
+            embed = discord.Embed(title=f"Market - {category}",
+                                  description="Available items:",
+                                  color=0x00ff00)
+            for item, data in MARKET_ITEMS[category].items():
+                embed.add_field(name=f"{item} - {data['price']} coins",
+                                value=data.get('effect', 'N/A'),
+                                inline=False)
+        else:
+            embed = discord.Embed(
+                title="Market Categories",
+                description="Choose a category to view items:",
+                color=0x00ff00)
+            for category in MARKET_ITEMS.keys():
+                embed.add_field(
+                    name=category,
+                    value="Use `!market view {category}` to see items",
+                    inline=False)
+        await ctx.send(embed=embed)
+
+    elif action == "buy":
+        if not category or not item:
+            await ctx.send("Please specify a category and an item to buy.")
+            return
+        if category not in MARKET_ITEMS or item not in MARKET_ITEMS[category]:
+            await ctx.send("Invalid category or item.")
+            return
+        item_data = MARKET_ITEMS[category][item]
+        if player['coins'] < item_data['price']:
+            await ctx.send("You don't have enough coins to buy this item.")
+            return
+        player['coins'] -= item_data['price']
+        player['inventory'][item] = player['inventory'].get(item, 0) + 1
+        await ctx.send(f"You've bought {item} for {item_data['price']} coins!")
+
+    else:
+        await ctx.send("Invalid market action. Use 'view' or 'buy'.")
+
+
+@bot.command(name='inventory', help='View your inventory')
+async def inventory(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    embed = discord.Embed(title=f"{ctx.author.name}'s Inventory",
+                          color=0x00ff00)
+
+    categories = {
+        "Resources": [],
+        "Fish": [],
+        "Tools": [],
+        "Accessories": [],
+        "Special Items": []
+    }
+
+    for item, quantity in player['inventory'].items():
+        category = next(
+            (cat for cat, items in MARKET_ITEMS.items() if item in items),
+            "Resources")
+        categories[category].append(f"{item}: {quantity}")
+
+    for category, items in categories.items():
+        if items:
+            embed.add_field(name=category,
+                            value="\n".join(items),
+                            inline=False)
+
+    await ctx.send(embed=embed)
+@bot.command(name='trade', help='Trade items with another player')
+async def trade(ctx, partner: discord.Member, give_item: str, give_amount: int,
+                receive_item: str, receive_amount: int):
+    if partner == ctx.author:
+        await ctx.send("You can't trade with yourself!")
+        return
+
+    trader = get_player(str(ctx.author.id))
+    receiver = get_player(str(partner.id))
+
+    if trader['inventory'].get(give_item, 0) < give_amount:
+        await ctx.send(f"You don't have enough {give_item} to trade.")
+        return
+
+    if receiver['inventory'].get(receive_item, 0) < receive_amount:
+        await ctx.send(
+            f"{partner.name} doesn't have enough {receive_item} to trade.")
+        return
+
+    # Perform the trade
+    trader['inventory'][give_item] -= give_amount
+    trader['inventory'][receive_item] = trader['inventory'].get(
+        receive_item, 0) + receive_amount
+    receiver['inventory'][receive_item] -= receive_amount
+    receiver['inventory'][give_item] = receiver['inventory'].get(
+        give_item, 0) + give_amount
+
+    await ctx.send(
+        f"Trade successful! {ctx.author.name} gave {give_amount} {give_item}(s) and received {receive_amount} {receive_item}(s) from {partner.name}.")
+
+
+@bot.command(name='farm', help='View your farm')
+async def farm(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    embed = discord.Embed(title=f"{ctx.author.name}'s Farm", color=0x00ff00)
+    for plot, crop in player['farm'].items():
+        embed.add_field(
+            name=f"Plot {plot}",
+            value=
+            f"{crop['name']} (Ready in {crop['harvest_time'] - datetime.now().timestamp():.0f}s)",
+            inline=True)
+    await ctx.send(embed=embed)
+
+
+# Commands
+@bot.command(name='start', help='Start your Melon RPG adventure')
+async def start(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    await ctx.send(
+        f"Welcome to Melon RPG, {ctx.author.name}! You've been given 100 coins to start your adventure. Use !help to see available commands."
+    )
+
+
+@bot.command(name='craft', help='Craft an item')
+async def craft(ctx, *, item_name: str):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    if item_name not in CRAFTING_RECIPES:
+        await ctx.send("Invalid item name.")
+        return
+    recipe = CRAFTING_RECIPES[item_name]
+    for ingredient, amount in recipe.items():
+        if ingredient != "result_quantity" and ingredient != "exp_gain":
+            if player['inventory'].get(ingredient, 0) < amount:
+                await ctx.send(
+                    f"You don't have enough {ingredient} to craft this item.")
+                return
+    for ingredient, amount in recipe.items():
+        if ingredient != "result_quantity" and ingredient != "exp_gain":
+            player['inventory'][ingredient] -= amount
+    player['inventory'][item_name] += recipe["result_quantity"]
+    exp_gain = recipe["exp_gain"]
+    level_up = update_skill(player, "crafting", exp_gain)
+    await ctx.send(
+        f"You crafted {recipe['result_quantity']} {item_name}(s) and gained {exp_gain} crafting exp!"
+    )
+    if level_up:
+        await ctx.send(
+            f"Congratulations! Your crafting skill leveled up to {player['skills']['crafting']['level']}!"
+        )
+
+
+@bot.command(name='mine', help='Go mining')
+async def mine(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    mining_tool = player['equipment']['mining_tool']
+    if mining_tool not in MINING_TOOLS:
+        await ctx.send("You need a mining tool to mine!")
+        return
+
+    mined_ore = random.choices(list(ORES.keys()),
+                               weights=[1 / ORES[o]["rarity"] for o in ORES],
+                               k=1)[0]
+    player['inventory'][mined_ore] += 1
+    exp_gain = ORES[mined_ore]["price"]
+    level_up = update_skill(player, "mining", exp_gain)
+
+    await ctx.send(
+        f"You mined some {mined_ore} and gained {exp_gain} mining exp!")
+    if level_up:
+        await ctx.send(
+            f"Congratulations! Your mining skill leveled up to {player['skills']['mining']['level']}!"
+        )
+
+
+@bot.command(name='profile', help='View your profile')
+async def profile(ctx):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    embed = discord.Embed(title=f"{ctx.author.name}'s Profile", color=0x00ff00)
+    embed.add_field(name="Coins", value=player['coins'], inline=False)
+    for skill, data in player['skills'].items():
+        embed.add_field(name=f"{skill.capitalize()} Level",
+                        value=f"{data['level']} ({data['exp']}/100)",
+                        inline=True)
+    embed.add_field(name="Equipment",
+                    value="\n".join([
+                        f"{slot.capitalize()}: {item}"
+                        for slot, item in player['equipment'].items() if item
+                    ]),
+                    inline=False)
+    await ctx.send(embed=embed)
+
+
+@bot.command(name='plant', help='Plant a crop')
+async def plant(ctx, crop_name: str, plot: int):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    if crop_name not in CROPS:
+        await ctx.send("Invalid crop name.")
+        return
+    if plot in player['farm']:
+        await ctx.send("This plot is already occupied.")
+        return
+    if player['inventory'].get(crop_name + " Seeds", 0) < 1:
+        await ctx.send("You don't have any seeds for this crop.")
+        return
+    player['inventory'][crop_name + " Seeds"] -= 1
+    player['farm'][plot] = {
+        "name":
+        crop_name,
+        "harvest_time":
+        datetime.now().timestamp() + CROPS[crop_name]["growth_time"] * 60
+    }
+    await ctx.send(f"You've planted {crop_name} in plot {plot}.")
+
+
+@bot.command(name='harvest', help='Harvest a crop')
+async def harvest(ctx, plot: int):
+    user_id = str(ctx.author.id)
+    player = get_player(user_id)
+    if plot not in player['farm']:
+        await ctx.send("There's no crop in this plot.")
+        return
+    crop = player['farm'][plot]
+    if datetime.now().timestamp() < crop['harvest_time']:
+        await ctx.send("This crop is not ready to harvest yet.")
+        return
+    harvest_amount = CROPS[crop['name']]["base_yield"]
+    player['inventory'][crop['name']] += harvest_amount
+    del player['farm'][plot]
+    exp_gain = harvest_amount * 10
+    level_up = update_skill(player, "farming", exp_gain)
+    await ctx.send(
+        f"You harvested {harvest_amount} {crop['name']}(s) and gained {exp_gain} farming exp!"
+    )
+    if level_up:
+        await ctx.send(
+            f"Congratulations! Your farming skill leveled up to {player['skills']['farming']['level']}!"
+        )

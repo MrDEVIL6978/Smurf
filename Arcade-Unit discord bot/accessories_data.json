@@ -1,0 +1,62 @@
+{
+    "farmer's hat": {
+        "price": 5000,
+        "effect": {
+            "farming_yield": 1.1
+        }
+    },
+    "lucky fishing hook": {
+        "price": 7500,
+        "effect": {
+            "fishing_luck": 1.15
+        }
+    },
+    "miner's gloves": {
+        "price": 10000,
+        "effect": {
+            "mining_efficiency": 1.2
+        }
+    },
+    "explorer's compass": {
+        "price": 15000,
+        "effect": {
+            "expedition_loot": 1.15
+        }
+    },
+    "ancient amulet": {
+        "price": 50000,
+        "effect": {
+            "all_stats": 1.05
+        }
+    },
+    "lucky charm": {
+        "price": 5000,
+        "effect": {
+            "fishing_luck": 1.2
+        }
+    },
+    "farmer's gloves": {
+        "price": 7500,
+        "effect": {
+            "farming_speed": 1.3
+        }
+    },
+    "miner's helmet": {
+        "price": 10000,
+        "effect": {
+            "mining_efficiency": 1.25
+        }
+    },
+    "adventurer's boots": {
+        "price": 15000,
+        "effect": {
+            "expedition_loot": 1.2
+        }
+    },
+    "enchanted amulet": {
+        "price": 25000,
+        "effect": {
+            "all_luck": 1.1
+        }
+    }
+}
